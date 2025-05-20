@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<style>
+body {
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+	box-sizing: border-box;
+}
+
+input[type=text], select, textarea {
+	width: 100%;
+	padding: 12px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+	margin-top: 6px;
+	margin-bottom: 16px;
+	resize: vertical;
+}
+
+input[type=submit] {
+	background-color: #04AA6D;
+	color: white;
+	padding: 12px 20px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+input[type=submit]:hover {
+	background-color: #45a049;
+}
+
+.container {
+	border-radius: 5px;
+	background-color: #f2f2f2;
+	padding: 20px;
+}
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+    margin: .4rem 0;
+}
+</style>
+</head>
+
+<body>
+
+	<div th:fragment="form">
+		<div class="w3-container w3-padding-16 w3-margin-bottom">
+			<form th:action="@{/registrationPage}" method="post"
+				th:object="${employee}" id="formEmployee">
+				<div th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></div>
+				<label>First Name:</label> <input type="text" id="firstName"
+					name="firstName" th:field="*{firstName}" placeholder="Your name.."></input>
+				<p style="color:red" th:if="${#fields.hasErrors('firstName')}"
+					th:errors="*{firstName}">Name Error</p>
+
+				<label for="lname">Middle Name:</label> <input type="text"
+					id="middleName" name="middleName" th:field="*{middleName}"
+					placeholder="Your middle name.."></input> 
+					<p style="color:red" th:if="${#fields.hasErrors('middleName')}"
+					th:errors="*{middleName}">MiddleName Error</p>
+					
+				<label for="lname">Last Name:</label> <input type="text" 
+				id="lastName" name="lastName" th:field="*{lastName}" placeholder="Your last name.."></input>
+				<p style="color:red" th:if="${#fields.hasErrors('lastName')}"
+					th:errors="*{lastName}">lastName Error</p>
+
+				<label for="birth">Birthday:</label><br><input type="date" id="birthday"
+					name="birthday" th:field="*{birthday}"
+					placeholder="Your birthday.."></input>
+				<p style="color:red" th:if="${#fields.hasErrors('birthday')}"
+					th:errors="*{birthday}">Birthday Error</p>
+					
+				<br><label for="pos">Position:</label> <input type="text" id="position"
+					name="position" th:field="*{position}"
+					placeholder="Your position.."></input>
+				<p style="color:red" th:if="${#fields.hasErrors('position')}"
+					th:errors="*{position}">Position Error</p>
+
+
+				<input type="hidden" id="id" name="id" th:field="*{id}" /> <input
+					type="hidden" id="uid" name="uid" th:field="*{uid}" /> <input
+					type="submit" value="Submit" />
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>
