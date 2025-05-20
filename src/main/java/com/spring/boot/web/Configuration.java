@@ -21,7 +21,7 @@ public class Configuration {
 	    SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
 	    templateResolver.setApplicationContext(webApplicationContext);
 	    templateResolver.setOrder(9);
-	    templateResolver.setPrefix("/WEB-INF/views/");
+	    templateResolver.setPrefix("classpath:/templates/");
 	    templateResolver.setSuffix("");
 	    return templateResolver;
 	}
@@ -49,7 +49,7 @@ public class Configuration {
 	    final InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
 	    viewResolver.setOrder(10);
 	    viewResolver.setViewClass(JstlView.class);
-	    viewResolver.setPrefix("/WEB-INF/views/");
+	    viewResolver.setPrefix("classpath:/templates/");
 	    viewResolver.setSuffix("");
 	    viewResolver.setViewNames("*.jsp");
 	    return viewResolver;
